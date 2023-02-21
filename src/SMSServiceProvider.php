@@ -41,7 +41,7 @@ class SMSServiceProvider extends ServiceProvider
         $this->registerCustomFieldsModels();
 
         $this->registerWebhooks();
-
+        $this->registerModulesPackages();
 
         $messageableTrait = new MessageableTrait();
         User::mixin($messageableTrait);
