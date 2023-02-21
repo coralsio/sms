@@ -1,0 +1,18 @@
+{
+    "code": "corals-sms",
+    "name": "SMS Module",
+    "author": "Corals",
+    "type": "module",
+    "description": "sms messaging module",
+    "namespace": "Corals\\Modules\\SMS\\",
+    "provider": "SMSServiceProvider",
+    "version": "1.0.1",
+    "load_order": "0",
+    "folder": "SMS",
+    "autoload": "psr-4",
+    "icon": "fa fa-envelope-open-o",
+    "require": {
+        "corals-utility": "^4.0",
+        "corals-utility-listOfValue": "1.0"
+    }
+}
