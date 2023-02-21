@@ -36,7 +36,7 @@ class ProviderRequest extends BaseRequest
                 'status' => 'required',
                 'provider' => 'required',
                 'keys.*' => 'required',
-                'phone' => 'required'
+                'phone' => 'required',
             ]);
         }
 
@@ -74,7 +74,7 @@ class ProviderRequest extends BaseRequest
         if ($this->isUpdate() || $this->isStore()) {
             $data = $this->all();
 
-            if (!empty($data['phone'])) {
+            if (! empty($data['phone'])) {
                 $data['phone'] = getCleanedPhoneNumber($data['phone']);
             }
 

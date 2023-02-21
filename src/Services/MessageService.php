@@ -2,7 +2,6 @@
 
 namespace Corals\Modules\SMS\Services;
 
-
 use Corals\Foundation\Services\BaseServiceClass;
 use Corals\Modules\SMS\Facades\SMS;
 use Corals\Modules\SMS\Models\PhoneNumber;
@@ -40,7 +39,7 @@ class MessageService extends BaseServiceClass
             'to' => $messageable->getPhoneNumber(),
             'from' => $provider->phone,
             'body' => $request->get('body'),
-            'provider' => $provider
+            'provider' => $provider,
         ]);
     }
 
@@ -50,7 +49,8 @@ class MessageService extends BaseServiceClass
      */
     public function getLatestUsedProviderId($messagable)
     {
-        return optional($messagable->messages()
+        return optional(
+            $messagable->messages()
             ->where('type', 'outgoing')
             ->latest()
             ->first()
@@ -82,11 +82,11 @@ class MessageService extends BaseServiceClass
         $cleanPhone = getCleanedPhoneNumber($request->get('phone'));
 
         $messageable = PhoneNumber::firstOrCreate([
-            'phone' => $cleanPhone
+            'phone' => $cleanPhone,
         ], [
             'name' => $cleanPhone,
             'status' => 'active',
-            'list_id' => SMSList::query()->first()->id
+            'list_id' => SMSList::query()->first()->id,
         ]);
 
         $this->sendMessage($request, $messageable);

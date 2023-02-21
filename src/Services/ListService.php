@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Corals\Modules\SMS\Services;
-
 
 use Corals\Foundation\Services\BaseServiceClass;
 use Corals\Modules\SMS\Models\SMSList;
@@ -16,12 +14,12 @@ class ListService extends BaseServiceClass
      */
     public function sendMessage(Request $request, SMSList $smsList)
     {
-        $messageService = new MessageService;
+        $messageService = new MessageService();
 
         $providers = $request->get('provider');
         $phoneNumbersCount = $smsList->phoneNumbers()->count();
 
-        if (!$phoneNumbersCount) {
+        if (! $phoneNumbersCount) {
             return;
         }
 
@@ -30,7 +28,6 @@ class ListService extends BaseServiceClass
         $smsList->phoneNumbers()
             ->where('status', 'active')
             ->chunk($providersChunkValue, function ($phoneNumbers, $page) use ($messageService, $providers) {
-
                 $providerIndex = ($page - 1) % count($providers);
                 $providerId = $providers[$providerIndex];
 
@@ -47,7 +44,6 @@ class ListService extends BaseServiceClass
      */
     protected function getProvidersChunkValue($providersCount, $phoneNumbersCount)
     {
-
         if ($providersCount >= $phoneNumbersCount) {
             $chunk = $providersCount / $phoneNumbersCount;
         } else {

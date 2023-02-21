@@ -8,7 +8,6 @@ use Corals\Modules\SMS\Http\Requests\MessageRequest;
 
 class MessagesHistoryController extends BaseController
 {
-
     public function __construct()
     {
         $this->resource_url = config('sms.models.message_history.resource_url');

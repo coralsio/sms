@@ -8,7 +8,8 @@ use Spatie\Activitylog\Traits\LogsActivity;
 
 class Provider extends BaseModel
 {
-    use PresentableTrait, LogsActivity;
+    use PresentableTrait;
+    use LogsActivity;
 
     /**
      *  Model configuration.
@@ -20,7 +21,7 @@ class Provider extends BaseModel
 
     protected $casts = [
         'properties' => 'json',
-        'keys' => 'json'
+        'keys' => 'json',
     ];
 
     protected $guarded = ['id'];

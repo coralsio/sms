@@ -14,7 +14,10 @@ use League\Csv\{Reader};
 
 class ImportPhoneNumbers implements ShouldQueue
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    use Dispatchable;
+    use InteractsWithQueue;
+    use Queueable;
+    use SerializesModels;
 
     protected $importFilePath;
 
@@ -45,6 +48,7 @@ class ImportPhoneNumbers implements ShouldQueue
 
         foreach ($reader->getRecords() as $record) {
             DB::beginTransaction();
+
             try {
                 $this->handleImportRecord(array_merge($record, $this->extraData));
                 DB::commit();
@@ -61,7 +65,6 @@ class ImportPhoneNumbers implements ShouldQueue
      */
     protected function handleImportRecord($record)
     {
-
         $record = array_map('trim', $record);
 
         $phone = getCleanedPhoneNumber(data_get($record, 'phone'));

@@ -3,6 +3,6 @@
 return [
     'provider' => [
         'title' => 'Providers',
-        'title_singular' => 'Provider'
-    ]
+        'title_singular' => 'Provider',
+    ],
 ];

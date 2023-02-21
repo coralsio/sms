@@ -21,19 +21,21 @@ class MessageHistoryTransformer extends BaseTransformer
      */
     public function transform(Message $message)
     {
-
         $createdAt = format_date_time($message->created_at);
         $status = str_replace('_', ' ', ucfirst($message->status));
 
         $transformedArray = [
             'id' => $message->id,
-            'messageable' => sprintf("<a href='%s'>%s</a>", $message->messageable->getShowURL() . "/messages",
-                $message->messageable->getIdentifier()),
+            'messageable' => sprintf(
+                "<a href='%s'>%s</a>",
+                $message->messageable->getShowURL() . "/messages",
+                $message->messageable->getIdentifier()
+            ),
             'body' => $message->body,
             'status' => $status,
             'created_at' => $createdAt,
             'updated_at' => format_date($message->updated_at),
-            'action' => $this->actions($message)
+            'action' => $this->actions($message),
         ];
 
         return parent::transformResponse($transformedArray);

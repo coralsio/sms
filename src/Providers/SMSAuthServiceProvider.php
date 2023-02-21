@@ -2,14 +2,14 @@
 
 namespace Corals\Modules\SMS\Providers;
 
+use Corals\Modules\SMS\Models\Message;
 use Corals\Modules\SMS\Models\PhoneNumber;
 use Corals\Modules\SMS\Models\Provider;
-use Corals\Modules\SMS\Models\Message;
 use Corals\Modules\SMS\Models\SMSList;
 use Corals\Modules\SMS\Policies\ListPolicy;
+use Corals\Modules\SMS\Policies\MessagePolicy;
 use Corals\Modules\SMS\Policies\PhoneNumberPolicy;
 use Corals\Modules\SMS\Policies\ProviderPolicy;
-use Corals\Modules\SMS\Policies\MessagePolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class SMSAuthServiceProvider extends ServiceProvider
@@ -23,7 +23,7 @@ class SMSAuthServiceProvider extends ServiceProvider
         Provider::class => ProviderPolicy::class,
         PhoneNumber::class => PhoneNumberPolicy::class,
         Message::class => MessagePolicy::class,
-        SMSList::class => ListPolicy::class
+        SMSList::class => ListPolicy::class,
     ];
 
     /**

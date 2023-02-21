@@ -2,7 +2,6 @@
 
 namespace Corals\Modules\SMS\Services;
 
-
 use Corals\Foundation\Services\BaseServiceClass;
 use Corals\Modules\SMS\Models\Provider;
 

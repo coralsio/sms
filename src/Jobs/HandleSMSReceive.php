@@ -14,7 +14,9 @@ use Illuminate\Support\Arr;
 
 class HandleSMSReceive implements ShouldQueue
 {
-    use InteractsWithQueue, Queueable, SerializesModels;
+    use InteractsWithQueue;
+    use Queueable;
+    use SerializesModels;
 
     /**
      * @var Webhook
@@ -41,8 +43,11 @@ class HandleSMSReceive implements ShouldQueue
             $webhook = $this->webhook;
 
             if ($webhook->status == 'processed') {
-                $this->webhook->saveException(new \Exception(trans('Utility::exceptions.webhook.already_processed',
-                    ['name' => $webhook->event_name, 'id' => $webhook->id])));
+                $this->webhook->saveException(new \Exception(trans(
+                    'Utility::exceptions.webhook.already_processed',
+                    ['name' => $webhook->event_name, 'id' => $webhook->id]
+                )));
+
                 return;
             }
 
@@ -69,12 +74,12 @@ class HandleSMSReceive implements ShouldQueue
      */
     public function handleReceivedMessage($payload)
     {
-        if (!empty($payload['From']) && !empty($payload['Body'])) {
+        if (! empty($payload['From']) && ! empty($payload['Body'])) {
             //twilio
             $from = getCleanedPhoneNumber(Arr::get($payload, 'From'));
             $body = Arr::get($payload, 'Body');
             $to = Arr::get($payload, 'To');
-        } elseif (!empty($payload['msisdn']) && !empty($payload['text'])) {
+        } elseif (! empty($payload['msisdn']) && ! empty($payload['text'])) {
             //nexmo
             $from = getCleanedPhoneNumber(Arr::get($payload, 'msisdn'));
             $body = Arr::get($payload, 'text');
@@ -149,7 +154,7 @@ class HandleSMSReceive implements ShouldQueue
             )->first();
         if ($originalMessage) {
             $originalMessage->update([
-                'body' => $originalMessage->body . $body
+                'body' => $originalMessage->body . $body,
             ]);
         }
     }

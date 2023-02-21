@@ -30,7 +30,7 @@ class SMS
     public function getSMSLists($status = null)
     {
         $query = SMSList::query();
-        
+
         if ($status) {
             $query->where('status', $status);
         }
@@ -63,12 +63,11 @@ class SMS
             'user_id' => $user->id,
             'status' => 'queued',
             'type' => 'outgoing',
-            'provider_id' => $provider->id
+            'provider_id' => $provider->id,
         ]);
 
         SendSMS::dispatch($messagable, $body, $message, $provider);
 
         return $message;
     }
-
 }

@@ -6,7 +6,6 @@ use Corals\Foundation\Transformers\FractalPresenter;
 
 class PhoneNumberPresenter extends FractalPresenter
 {
-
     /**
      * @param array $extras
      * @return ProviderTransformer|\League\Fractal\TransformerAbstract

@@ -21,7 +21,6 @@ class ListTransformer extends BaseTransformer
      */
     public function transform(SMSList $smsList)
     {
-
         $transformedArray = [
             'id' => $smsList->id,
             'code' => HtmlElement('a', ['href' => $smsList->getShowURL()], $smsList->code),
@@ -31,7 +30,7 @@ class ListTransformer extends BaseTransformer
             'status' => formatStatusAsLabels($smsList->status),
             'created_at' => format_date($smsList->created_at),
             'updated_at' => format_date($smsList->updated_at),
-            'action' => $this->actions($smsList)
+            'action' => $this->actions($smsList),
         ];
 
         return parent::transformResponse($transformedArray);

@@ -21,6 +21,7 @@ class ListPolicy extends BasePolicy
         if ($user->can('SMS::list.view')) {
             return true;
         }
+
         return false;
     }
 
@@ -43,6 +44,7 @@ class ListPolicy extends BasePolicy
         if ($user->can('SMS::list.update')) {
             return true;
         }
+
         return false;
     }
 
@@ -63,5 +65,4 @@ class ListPolicy extends BasePolicy
 
         return false;
     }
-
 }

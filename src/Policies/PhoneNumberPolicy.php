@@ -21,6 +21,7 @@ class PhoneNumberPolicy extends BasePolicy
         if ($user->can('SMS::phone_number.view')) {
             return true;
         }
+
         return false;
     }
 
@@ -43,6 +44,7 @@ class PhoneNumberPolicy extends BasePolicy
         if ($user->can('SMS::phone_number.update')) {
             return true;
         }
+
         return false;
     }
 
@@ -60,7 +62,7 @@ class PhoneNumberPolicy extends BasePolicy
         if ($user->can('SMS::phone_number.delete')) {
             return true;
         }
+
         return false;
     }
-
 }

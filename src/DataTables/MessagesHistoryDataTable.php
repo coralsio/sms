@@ -57,7 +57,7 @@ class MessagesHistoryDataTable extends BaseDataTable
     protected function getOptions()
     {
         return [
-            'has_action' => false
+            'has_action' => false,
         ];
     }
 }

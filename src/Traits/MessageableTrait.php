@@ -1,8 +1,6 @@
 <?php
 
-
 namespace Corals\Modules\SMS\Traits;
-
 
 use Corals\Modules\SMS\Models\Message;
 
@@ -13,11 +11,11 @@ trait MessageableTrait
      */
     public function getPhoneNumber()
     {
-        if (!is_null($phoneNumber = $this->phone_number)) {
+        if (! is_null($phoneNumber = $this->phone_number)) {
             return $phoneNumber;
         }
 
-        if (!is_null($phone = $this->phone)) {
+        if (! is_null($phone = $this->phone)) {
             return $phone;
         }
     }
@@ -55,5 +53,4 @@ trait MessageableTrait
      * @return mixed
      */
     abstract public static function getSMSBodyDescriptions(): array;
-
 }

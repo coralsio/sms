@@ -59,7 +59,6 @@ class PhoneNumbersController extends BaseController
     public function store(PhoneNumberRequest $request)
     {
         try {
-
             $phoneNumber = $this->phoneNumberService->store($request, PhoneNumber::class);
 
             flash(trans('Corals::messages.success.created', ['item' => $this->title_singular]))->success();
@@ -140,7 +139,7 @@ class PhoneNumbersController extends BaseController
      */
     public function importCSVModal(Request $request)
     {
-        abort_if(!$request->ajax(), 404);
+        abort_if(! $request->ajax(), 404);
 
         $headers = trans('SMS::labels.phone_number.phone-numbers-headers');
 
@@ -165,7 +164,6 @@ class PhoneNumbersController extends BaseController
         return $this->phoneNumberService->downloadImportSample();
     }
 
-
     /**
      * @param Request $request
      * @param PhoneNumber $phoneNumber
@@ -176,8 +174,8 @@ class PhoneNumbersController extends BaseController
     {
         $this->setViewSharedData([
             'title_singular' => trans('SMS::labels.phone_number.send_message_to_title', [
-                'to' => sprintf('%s [%s]', $phoneNumber->getIdentifier(), $phoneNumber->getPhoneNumber())
-            ])
+                'to' => sprintf('%s [%s]', $phoneNumber->getIdentifier(), $phoneNumber->getPhoneNumber()),
+            ]),
         ]);
 
         return $messageService->messageableThread($phoneNumber);
@@ -189,7 +187,7 @@ class PhoneNumbersController extends BaseController
      */
     public function sendBulkMessageModal(Request $request)
     {
-        abort_if(!$request->ajax(), 404);
+        abort_if(! $request->ajax(), 404);
 
         return view('SMS::phone_numbers.partials.bulk_message_modal')
             ->with(['smsBodyDescription' => PhoneNumber::getSMSBodyDescriptions()]);
@@ -222,7 +220,8 @@ class PhoneNumbersController extends BaseController
                     case 'send_messages':
                         foreach ($ids as $id) {
                             $messageService->sendMessage(
-                                $request, PhoneNumber::query()->find($id)
+                                $request,
+                                PhoneNumber::query()->find($id)
                             );
                         }
 
@@ -231,7 +230,6 @@ class PhoneNumbersController extends BaseController
                         break;
                 }
             }
-
         } catch (\Exception $exception) {
             log_exception($exception, PhoneNumbersController::class, 'bulkAction');
             $message = ['level' => 'error', 'message' => $exception->getMessage()];

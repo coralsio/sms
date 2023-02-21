@@ -34,12 +34,15 @@ class MessageTransformer extends BaseTransformer
         switch ($message->status) {
             case 'queued':
                 $status = formatStatusAsLabels($statusText);
+
                 break;
             case 'sent_to_provider':
                 $status = formatStatusAsLabels($statusText, ['level' => 'success']);
+
                 break;
             case 'received':
                 $status = formatStatusAsLabels($statusText, ['level' => 'info']);
+
                 break;
             default:
                 $status = formatStatusAsLabels($statusText, ['level' => 'primary']);
@@ -48,8 +51,11 @@ class MessageTransformer extends BaseTransformer
         $transformedArray = [
             'id' => $message->id,
             'messageable' => $message->messageable->getIdentifier(),
-            'phone' => sprintf("<a href='%s'>%s</a>", $message->messageable->getShowURL() . "/messages",
-                $message->messageable->getPhoneNumber()),
+            'phone' => sprintf(
+                "<a href='%s'>%s</a>",
+                $message->messageable->getShowURL() . "/messages",
+                $message->messageable->getPhoneNumber()
+            ),
             'initiator' => $initiator,
             'status' => $status,
             'body' => $message->body,
@@ -57,7 +63,7 @@ class MessageTransformer extends BaseTransformer
             'info' => join(' | ', [$initiator, $status, $createdAt]),
             'created_at' => $createdAt,
             'updated_at' => format_date($message->updated_at),
-            'action' => $this->actions($message)
+            'action' => $this->actions($message),
         ];
 
         return parent::transformResponse($transformedArray);

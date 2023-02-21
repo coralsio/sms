@@ -32,7 +32,7 @@ class ProviderTransformer extends BaseTransformer
             'keys' => request()->ajax() ? generatePopover($keys) : $keys,
             'created_at' => format_date($provider->created_at),
             'updated_at' => format_date($provider->updated_at),
-            'action' => $this->actions($provider)
+            'action' => $this->actions($provider),
         ];
 
         return parent::transformResponse($transformedArray);

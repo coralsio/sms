@@ -10,17 +10,17 @@ return [
                     'name' => 'nexmo',
                     'keys' => [
                         'NEXMO_KEY',
-                        'NEXMO_SECRET'
+                        'NEXMO_SECRET',
                     ],
                 ],
                 'twilio' => [
                     'name' => 'twilio',
                     'keys' => [
                         'TWILIO_ACCOUNT_SID',
-                        'TWILIO_AUTH_TOKEN'
-                    ]
-                ]
-            ]
+                        'TWILIO_AUTH_TOKEN',
+                    ],
+                ],
+            ],
         ],
         'phone_number' => [
             'presenter' => \Corals\Modules\SMS\Transformers\PhoneNumberPresenter::class,
@@ -39,8 +39,8 @@ return [
             'resource_url' => 'sms/messages',
             'actions' => [
                 'edit' => [],
-                'delete' => []
-            ]
+                'delete' => [],
+            ],
         ],
         'message_history' => [
             'resource_url' => 'sms/messages-history',
@@ -54,17 +54,17 @@ return [
                     'label_pattern' => ['pattern' => '[arg]', 'replace' => ["return trans('SMS::labels.phone_number.send_message');"]],
                     'data' => [
                         'title' => 'Send Message',
-                        'action' => 'modal-load'
+                        'action' => 'modal-load',
                     ],
-                ]
-            ]
+                ],
+            ],
 
-        ]
+        ],
     ],
     'webhook' => [
         'events' => [
             'sms_receive' => \Corals\Modules\SMS\Jobs\HandleSMSReceive::class,
             'sms_delivery' => \Corals\Modules\SMS\Jobs\HandleSMSDelivery::class,
-        ]
-    ]
+        ],
+    ],
 ];

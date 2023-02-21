@@ -22,11 +22,12 @@ class SMSMenuDatabaseSeeder extends Seeder
             'description' => 'SMS Menu Item',
             'icon' => 'fa fa-envelope-open-o',
             'target' => null, 'roles' => '["1","2"]',
-            'order' => 0
+            'order' => 0,
         ]);
 
         // seed children menu
-        \DB::table('menus')->insert([
+        \DB::table('menus')->insert(
+            [
                 [
                     'parent_id' => $sms_menu_id,
                     'key' => null,
@@ -36,7 +37,7 @@ class SMSMenuDatabaseSeeder extends Seeder
                     'description' => 'Providers List Menu Item',
                     'icon' => 'fa fa-plug',
                     'target' => null, 'roles' => '["1"]',
-                    'order' => 0
+                    'order' => 0,
                 ],
                 [
                     'parent_id' => $sms_menu_id,
@@ -47,7 +48,7 @@ class SMSMenuDatabaseSeeder extends Seeder
                     'description' => 'SMS Lists Menu Item',
                     'icon' => 'fa fa-list-ol',
                     'target' => null, 'roles' => '["1"]',
-                    'order' => 0
+                    'order' => 0,
                 ],
                 [
                     'parent_id' => $sms_menu_id,
@@ -58,7 +59,7 @@ class SMSMenuDatabaseSeeder extends Seeder
                     'description' => 'Phone numbers List Menu Item',
                     'icon' => 'fa fa-phone',
                     'target' => null, 'roles' => '["1"]',
-                    'order' => 0
+                    'order' => 0,
                 ],
 
                 [
@@ -70,7 +71,7 @@ class SMSMenuDatabaseSeeder extends Seeder
                     'description' => 'Messages List Menu Item',
                     'icon' => 'fa fa-envelope-open',
                     'target' => null, 'roles' => '["1"]',
-                    'order' => 0
+                    'order' => 0,
                 ],
 
                 [
@@ -82,8 +83,8 @@ class SMSMenuDatabaseSeeder extends Seeder
                     'description' => 'Messages History List Menu Item',
                     'icon' => 'fa fa-history',
                     'target' => null, 'roles' => '["1"]',
-                    'order' => 0
-                ]
+                    'order' => 0,
+                ],
             ]
         );
     }

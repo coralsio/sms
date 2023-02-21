@@ -26,23 +26,23 @@ return [
         'no_messages_yet' => 'No Messages yet!',
         'message_sent_successfully' => 'Message sent successfully!',
         'send_message_to_title' => 'Messages of: :to',
-        'no_changes_done' => 'No changes done!!'
+        'no_changes_done' => 'No changes done!!',
     ],
     'message' => [
         'messageable' => 'Messageable',
         'body' => 'Body',
         'sms_parameters' => 'SMS Parameters',
-        'send_message' => '<i class="fa fa-send"></i> Send Message'
+        'send_message' => '<i class="fa fa-send"></i> Send Message',
     ],
 
     'message_history' => [
         'messageable' => 'Messageable',
-        'body' => 'Body'
+        'body' => 'Body',
     ],
     'list' => [
         'message_sent' => 'messages successfully sent to numbers',
         'phone_numbers_count' => 'Phone numbers count',
         'send_bulk_message' => '<i class="fa fa-send"></i> Send message',
-        'messages_has_been_sent' => 'Messages successfully sent!'
-    ]
+        'messages_has_been_sent' => 'Messages successfully sent!',
+    ],
 ];

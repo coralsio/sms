@@ -29,14 +29,14 @@ class SMSSettingsDatabaseSeeder extends Seeder
             'code' => 'sms_pre_defined_messages',
             'label' => 'SMS Pre defined message',
             'module' => 'SMS',
-            'status' => 'active'
+            'status' => 'active',
         ]);
 
         ListOfValues::insertListOfValuesChildren($smsPredefinedMessage, [
             'pre_defined_message_example' => [
                 'label' => 'pre defined message example..',
                 'value' => 'pre defined message example..',
-            ]
+            ],
         ]);
     }
 
@@ -45,11 +45,10 @@ class SMSSettingsDatabaseSeeder extends Seeder
      */
     protected function seedSMSLists()
     {
-
         SMSList::query()->create([
             'code' => 'main_list',
             'label' => 'Main List',
-            'status' => 'active'
+            'status' => 'active',
         ]);
     }
 }
