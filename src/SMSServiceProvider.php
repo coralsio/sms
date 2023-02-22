@@ -28,13 +28,11 @@ class SMSServiceProvider extends BasePackageServiceProvider
      */
     protected $packageCode = 'corals-sms';
 
-
     /**
      * Bootstrap the application events.
      *
      * @return void
      */
-
     public function bootPackage()
     {
         // Load view
