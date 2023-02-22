@@ -9,7 +9,8 @@ use Spatie\Activitylog\Traits\LogsActivity;
 
 class Message extends BaseModel
 {
-    use PresentableTrait, LogsActivity;
+    use PresentableTrait;
+    use LogsActivity;
 
     /**
      *  Model configuration.

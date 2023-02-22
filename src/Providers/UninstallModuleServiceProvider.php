@@ -9,7 +9,7 @@ use Corals\Modules\SMS\database\seeds\SMSDatabaseSeeder;
 class UninstallModuleServiceProvider extends BaseUninstallModuleServiceProvider
 {
     protected $migrations = [
-        SmsTables::class
+        SmsTables::class,
     ];
 
     protected function providerBooted()

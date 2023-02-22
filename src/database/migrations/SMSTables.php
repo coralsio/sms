@@ -16,7 +16,6 @@ class SMSTables extends Migration
     public function up()
     {
         Schema::create('sms_providers', function (Blueprint $table) {
-
             $table->increments('id');
 
             $table->string('name');
@@ -38,7 +37,6 @@ class SMSTables extends Migration
         });
 
         Schema::create('sms_lists', function (Blueprint $table) {
-
             $table->increments('id');
 
             $table->string('code')->unique();
@@ -53,13 +51,10 @@ class SMSTables extends Migration
 
             $table->softDeletes();
             $table->timestamps();
-
-
         });
 
 
         Schema::create('sms_phone_numbers', function (Blueprint $table) {
-
             $table->increments('id');
 
             $table->string('phone');
@@ -86,7 +81,6 @@ class SMSTables extends Migration
         });
 
         Schema::create('sms_messages', function (Blueprint $table) {
-
             $table->increments('id');
 
             $table->morphs('messageable');
@@ -116,7 +110,6 @@ class SMSTables extends Migration
                 ->onDelete('SET NULL')
                 ->onUpdate('Cascade');
         });
-
     }
 
     /**
@@ -130,6 +123,5 @@ class SMSTables extends Migration
         Schema::dropIfExists('sms_messages');
         Schema::dropIfExists('sms_providers');
         Schema::dropIfExists('sms_lists');
-
     }
 }

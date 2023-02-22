@@ -10,7 +10,10 @@ use Spatie\Activitylog\Traits\LogsActivity;
 
 class PhoneNumber extends BaseModel
 {
-    use PresentableTrait, LogsActivity, Notifiable, MessageableTrait;
+    use PresentableTrait;
+    use LogsActivity;
+    use Notifiable;
+    use MessageableTrait;
 
     /**
      *  Model configuration.

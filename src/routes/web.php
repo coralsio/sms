@@ -8,7 +8,6 @@ Route::group(['prefix' => 'sms'], function () {
     Route::resource('providers', 'ProvidersController')->except('show');
 
     Route::group(['prefix' => 'lists'], function () {
-
         Route::get('send-bulk-message-modal', 'ListsController@sendBulkMessageModal');
         Route::post('send-bulk-message', 'ListsController@sendBulkMessage');
 
@@ -23,7 +22,7 @@ Route::group(['prefix' => 'sms'], function () {
 
 
     Route::resource('lists', 'ListsController')->parameters([
-        'lists' => 'sms_list'
+        'lists' => 'sms_list',
     ]);
 
     Route::resource('messages', 'BaseMessagesController')

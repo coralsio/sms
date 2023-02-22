@@ -34,13 +34,13 @@ class PhoneNumberRequest extends BaseRequest
             $rules = array_merge($rules, [
                 'email' => 'nullable|email',
                 'status' => 'required',
-                'list_id' => 'required'
+                'list_id' => 'required',
             ]);
         }
 
         if ($this->isStore()) {
             $rules = array_merge($rules, [
-                'phone' => 'required|unique:sms_phone_numbers,phone'
+                'phone' => 'required|unique:sms_phone_numbers,phone',
             ]);
         }
 
@@ -60,7 +60,7 @@ class PhoneNumberRequest extends BaseRequest
         if ($this->isUpdate() || $this->isStore()) {
             $data = $this->all();
 
-            if (!empty($data['phone'])) {
+            if (! empty($data['phone'])) {
                 $data['phone'] = getCleanedPhoneNumber($data['phone']);
             }
 

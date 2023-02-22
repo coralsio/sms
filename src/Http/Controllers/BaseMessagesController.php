@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Corals\Modules\SMS\Http\Controllers;
 
 use Corals\Foundation\Http\Controllers\BaseController;
@@ -9,7 +8,6 @@ use Corals\Modules\SMS\Http\Requests\MessageRequest;
 use Corals\Modules\SMS\Models\PhoneNumber;
 use Corals\Modules\SMS\Services\MessageService;
 use Illuminate\Http\Request;
-
 
 class BaseMessagesController extends BaseController
 {
@@ -44,7 +42,6 @@ class BaseMessagesController extends BaseController
         parent::__construct();
     }
 
-
     /**
      * @param MessageRequest $request
      * @param MessagesDataTable $dataTable
@@ -66,8 +63,8 @@ class BaseMessagesController extends BaseController
 
         $this->setViewSharedData([
             'title_singular' => trans('SMS::labels.phone_number.send_message_to_title', [
-                'to' => sprintf('%s [%s]', $messageable->getIdentifier(), $messageable->getPhoneNumber())
-            ])
+                'to' => sprintf('%s [%s]', $messageable->getIdentifier(), $messageable->getPhoneNumber()),
+            ]),
         ]);
 
         return $this->messageService->messageableThread($messageable);
@@ -84,11 +81,11 @@ class BaseMessagesController extends BaseController
         $this->validate($request, ['messageable_type' => 'required', 'body' => 'required', 'provider' => 'required']);
 
         try {
-
             $messageable = $request->get('messageable_type')::findByHash($messageable);
 
             $message = $this->messageService->sendMessage(
-                $request, $messageable
+                $request,
+                $messageable
             );
 
             return response()->json([
@@ -99,16 +96,15 @@ class BaseMessagesController extends BaseController
                         'body' => $message->body,
                         'created_at' => $message->present('created_at'),
                         'info' => $message->present('info'),
-                    ]
-                ]
+                    ],
+                ],
             ]);
-
         } catch (\Exception $e) {
             log_exception($e);
 
             return response()->json([
                 'message' => $e->getMessage(),
-                'level' => 'error'
+                'level' => 'error',
             ]);
         }
     }
@@ -119,7 +115,7 @@ class BaseMessagesController extends BaseController
      */
     public function sendQuickMessageModal(Request $request)
     {
-        abort_if(!$request->ajax(), 404);
+        abort_if(! $request->ajax(), 404);
 
         return view("SMS::messages.partials.send_quick_message_modal");
     }
@@ -134,26 +130,23 @@ class BaseMessagesController extends BaseController
         $this->validate($request, [
             'body' => 'required',
             'provider' => 'required',
-            'phone' => 'required'
+            'phone' => 'required',
         ]);
 
         try {
-
             $this->messageService->sendQuickMessage($request);
 
             return response()->json([
                 'level' => 'success',
                 'message' => trans('SMS::labels.phone_number.message_sent_successfully'),
             ]);
-
         } catch (\Exception $e) {
             report($e);
 
             return response()->json([
                 'message' => $e->getMessage(),
-                'level' => 'error'
+                'level' => 'error',
             ]);
         }
     }
-
 }

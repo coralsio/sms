@@ -3,9 +3,7 @@
 namespace Corals\Modules\SMS\Http\Requests;
 
 use Corals\Foundation\Http\Requests\BaseRequest;
-use Corals\Modules\SMS\Models\Provider;
 use Corals\Modules\SMS\Models\SMSList;
-use Illuminate\Support\Str;
 
 class ListRequest extends BaseRequest
 {

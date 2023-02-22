@@ -19,6 +19,6 @@ return [
 
     'list' => [
         'code' => 'Code',
-        'label' => 'Label'
-    ]
+        'label' => 'Label',
+    ],
 ];

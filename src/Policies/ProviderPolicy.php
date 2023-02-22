@@ -9,6 +9,7 @@ use Corals\User\Models\User;
 class ProviderPolicy extends BasePolicy
 {
     protected $administrationPermission = 'Administrations::admin.sms';
+
     /**
      * @param User $user
      * @return bool
@@ -18,6 +19,7 @@ class ProviderPolicy extends BasePolicy
         if ($user->can('SMS::provider.view')) {
             return true;
         }
+
         return false;
     }
 
@@ -40,6 +42,7 @@ class ProviderPolicy extends BasePolicy
         if ($user->can('SMS::provider.update')) {
             return true;
         }
+
         return false;
     }
 
@@ -53,7 +56,7 @@ class ProviderPolicy extends BasePolicy
         if ($user->can('SMS::provider.delete')) {
             return true;
         }
+
         return false;
     }
-
 }

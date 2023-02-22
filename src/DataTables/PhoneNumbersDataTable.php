@@ -49,7 +49,7 @@ class PhoneNumbersDataTable extends BaseDataTable
             'list' => [
                 'title' => trans('SMS::attributes.phone_number.list'),
                 'orderable' => false,
-                'searchable' => false
+                'searchable' => false,
             ],
             'email' => ['title' => trans('SMS::attributes.phone_number.email')],
             'status' => ['title' => trans('Corals::attributes.status')],
@@ -65,14 +65,14 @@ class PhoneNumbersDataTable extends BaseDataTable
                 'class' => 'col-md-2',
                 'type' => 'text',
                 'condition' => 'like',
-                'active' => true
+                'active' => true,
             ],
             'list_id' => [
                 'title' => trans('SMS::module.list.title_singular'),
                 'class' => 'col-md-2',
                 'type' => 'select2',
                 'options' => SMS::getSMSLists(),
-                'active' => true
+                'active' => true,
             ],
         ];
     }
@@ -89,7 +89,7 @@ class PhoneNumbersDataTable extends BaseDataTable
                 'confirmation' => '',
                 'action' => 'modal-load',
                 'href' => url('sms/phone-numbers/send-bulk-messages-modal'),
-                'modal-title' => trans('SMS::labels.phone_number.send_message_title')
+                'modal-title' => trans('SMS::labels.phone_number.send_message_title'),
             ],
         ];
     }
@@ -100,7 +100,7 @@ class PhoneNumbersDataTable extends BaseDataTable
     protected function getOptions()
     {
         return [
-            'resource_url' => url(config('sms.models.phone_number.resource_url'))
+            'resource_url' => url(config('sms.models.phone_number.resource_url')),
         ];
     }
 }

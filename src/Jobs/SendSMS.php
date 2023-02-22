@@ -10,7 +10,10 @@ use Illuminate\Queue\{InteractsWithQueue, SerializesModels};
 
 class SendSMS implements ShouldQueue
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    use Dispatchable;
+    use InteractsWithQueue;
+    use Queueable;
+    use SerializesModels;
 
     /**
      * @var
@@ -55,7 +58,6 @@ class SendSMS implements ShouldQueue
     {
         if (method_exists($this->messagable, 'notify')) {
             try {
-
                 tap(new SendMessage($this->body, $this->provider, $this->message), function ($messageNotification) {
                     $channelMethod = "to" . ucfirst($messageNotification->via($this->messagable));
                     if (method_exists($messageNotification, $channelMethod)) {
@@ -64,8 +66,6 @@ class SendSMS implements ShouldQueue
                         logger(sprintf("Channel Method  [%s] doesn't exists in %s", $channelMethod, SendMessage::class));
                     }
                 });
-
-
             } catch (\Exception $exception) {
                 logger('Classes\SMS@send');
                 logger($exception->getMessage());
@@ -73,5 +73,4 @@ class SendSMS implements ShouldQueue
             }
         }
     }
-
 }

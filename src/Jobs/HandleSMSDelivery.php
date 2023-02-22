@@ -12,7 +12,9 @@ use Illuminate\Support\Arr;
 
 class HandleSMSDelivery implements ShouldQueue
 {
-    use InteractsWithQueue, Queueable, SerializesModels;
+    use InteractsWithQueue;
+    use Queueable;
+    use SerializesModels;
 
     /**
      * @var Webhook
@@ -39,8 +41,11 @@ class HandleSMSDelivery implements ShouldQueue
             $webhook = $this->webhook;
 
             if ($webhook->status == 'processed') {
-                $this->webhook->saveException(new \Exception(trans('Utility::exceptions.webhook.already_processed',
-                    ['name' => $webhook->event_name, 'id' => $webhook->id])));
+                $this->webhook->saveException(new \Exception(trans(
+                    'Utility::exceptions.webhook.already_processed',
+                    ['name' => $webhook->event_name, 'id' => $webhook->id]
+                )));
+
                 return;
             }
 
@@ -67,11 +72,11 @@ class HandleSMSDelivery implements ShouldQueue
      */
     protected function handleUpdateMessageStatus($payload): void
     {
-        if (!empty($payload['To']) && !empty($payload['SmsStatus'])) {
+        if (! empty($payload['To']) && ! empty($payload['SmsStatus'])) {
             //twilio
             $msisdn = getCleanedPhoneNumber(Arr::get($payload, 'To'));
             $status = Arr::get($payload, 'SmsStatus');
-        } elseif (!empty($payload['msisdn']) && !empty($payload['status'])) {
+        } elseif (! empty($payload['msisdn']) && ! empty($payload['status'])) {
             //nexmo
             $msisdn = getCleanedPhoneNumber(Arr::get($payload, 'msisdn'));
             $status = Arr::get($payload, 'status');
@@ -84,7 +89,7 @@ class HandleSMSDelivery implements ShouldQueue
             ->latest()
             ->first();
 
-        if (!$lastMessage) {
+        if (! $lastMessage) {
             throw new \Exception("No such messages found with [$msisdn] phone number");
         }
 
@@ -98,8 +103,7 @@ class HandleSMSDelivery implements ShouldQueue
 
         $lastMessage->update([
             'status' => $status,
-            'properties' => $properties
+            'properties' => $properties,
         ]);
     }
-
 }

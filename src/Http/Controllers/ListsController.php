@@ -10,7 +10,6 @@ use Corals\Modules\SMS\Models\SMSList;
 use Corals\Modules\SMS\Services\ListService;
 use Illuminate\Http\Request;
 
-
 class ListsController extends BaseController
 {
     protected $listService;
@@ -91,8 +90,6 @@ class ListsController extends BaseController
      */
     public function edit(ListRequest $request, SMSList $smsList)
     {
-
-
         $this->setViewSharedData(['title_singular' => trans('Corals::labels.update_title', ['title' => $smsList->getIdentifier('code')])]);
 
         return view('SMS::lists.create_edit')->with(compact('smsList'));
@@ -142,13 +139,13 @@ class ListsController extends BaseController
      */
     public function sendListMessageModal(Request $request, SMSList $smsList)
     {
-        abort_if(!$request->ajax(), 404);
+        abort_if(! $request->ajax(), 404);
 
         return view('SMS::lists.partials.send_list_message_modal')
             ->with([
                 'smsBodyDescription' => PhoneNumber::getSMSBodyDescriptions(),
                 'smsList' => $smsList,
-                'url' => $smsList->getShowURL() . '/send-list-message'
+                'url' => $smsList->getShowURL() . '/send-list-message',
             ]);
     }
 
@@ -161,18 +158,18 @@ class ListsController extends BaseController
     public function sendListMessage(Request $request, SMSList $smsList)
     {
         $this->validate($request, ['body' => 'required', 'provider' => 'required']);
-        try {
 
+        try {
             $this->listService->sendMessage($request, $smsList);
 
             return response()->json([
                 'level' => 'success',
-                'message' => trans('SMS::labels.list.message_sent')
+                'message' => trans('SMS::labels.list.message_sent'),
             ]);
         } catch (\Exception $exception) {
             return response()->json([
                 'level' => 'error',
-                'message' => $exception->getMessage()
+                'message' => $exception->getMessage(),
             ]);
         }
     }
@@ -195,20 +192,18 @@ class ListsController extends BaseController
      */
     public function sendBulkMessage(Request $request)
     {
-
         $request->request->add([
-            'selection' => json_decode($request->get('selection'), true)
+            'selection' => json_decode($request->get('selection'), true),
         ]);
 
         $request->validate([
             'body' => 'required',
             'provider' => 'required',
-            'selection' => 'required|array|min:1'
+            'selection' => 'required|array|min:1',
         ], ['selection.required' => 'No records selected.']);
 
 
         try {
-
             $ids = [];
 
             foreach ($request->get('selection') as $selection) {
@@ -221,12 +216,12 @@ class ListsController extends BaseController
                 });
             $message = [
                 'level' => 'success',
-                'message' => trans('SMS::labels.list.messages_has_been_sent')
+                'message' => trans('SMS::labels.list.messages_has_been_sent'),
             ];
         } catch (\Exception $exception) {
             $message = [
                 'level' => 'error',
-                'message' => $exception->getMessage()
+                'message' => $exception->getMessage(),
             ];
 
             $code = 400;

@@ -138,7 +138,8 @@ class ProvidersController extends BaseController
      */
     public function renderProviderKeys(Request $request, Provider $provider)
     {
-        abort_if(!$request->ajax(), 404);
+        abort_if(! $request->ajax(), 404);
+
         return $this->providerService->renderProviderKeys($provider, $request->get('provider_key'));
     }
 }

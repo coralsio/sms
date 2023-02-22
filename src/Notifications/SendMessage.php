@@ -8,7 +8,6 @@ use Illuminate\Notifications\Notification;
 use Vonage\Client;
 use Vonage\Client\Credentials\Basic;
 
-
 class SendMessage extends Notification implements ShouldQueue
 {
     use Queueable;

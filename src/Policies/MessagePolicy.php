@@ -3,7 +3,6 @@
 namespace Corals\Modules\SMS\Policies;
 
 use Corals\Foundation\Policies\BasePolicy;
-use Corals\Modules\SMS\Models\PhoneNumber;
 use Corals\User\Models\User;
 
 class MessagePolicy extends BasePolicy
@@ -18,5 +17,4 @@ class MessagePolicy extends BasePolicy
     {
         return $user->can('SMS::message.view');
     }
-
 }

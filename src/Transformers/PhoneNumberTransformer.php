@@ -38,7 +38,7 @@ class PhoneNumberTransformer extends BaseTransformer
             'last_name' => $phoneNumber->last_name ?? '-',
             'created_at' => format_date($phoneNumber->created_at),
             'updated_at' => format_date($phoneNumber->updated_at),
-            'action' => $this->actions($phoneNumber)
+            'action' => $this->actions($phoneNumber),
         ];
 
         return parent::transformResponse($transformedArray);

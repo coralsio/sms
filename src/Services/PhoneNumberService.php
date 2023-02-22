@@ -2,7 +2,6 @@
 
 namespace Corals\Modules\SMS\Services;
 
-
 use Corals\Foundation\Services\BaseServiceClass;
 use Corals\Modules\SMS\Jobs\ImportPhoneNumbers;
 use Corals\Modules\SMS\Models\SMSList;
@@ -24,11 +23,10 @@ class PhoneNumberService extends BaseServiceClass
     {
         $this->validate($request, [
             'csv_file' => 'required|mimes:csv,txt|max:' . maxUploadFileSize(),
-            'list_id' => 'required'
+            'list_id' => 'required',
         ]);
 
         try {
-
             // store file in temp folder
             $file = $request->file('csv_file');
 
@@ -45,18 +43,18 @@ class PhoneNumberService extends BaseServiceClass
 
             ImportPhoneNumbers::dispatch($fileFullPath, [
                 'list_id' => $listId,
-                'status' => 'active'
+                'status' => 'active',
             ]);
 
             return response()->json([
                 'level' => 'success',
                 'action' => 'closeModal',
-                'message' => trans('SMS::labels.phone_number.file_uploaded')
+                'message' => trans('SMS::labels.phone_number.file_uploaded'),
             ]);
         } catch (\Exception $exception) {
             return response()->json([
                 'level' => 'error',
-                'message' => $exception->getMessage()
+                'message' => $exception->getMessage(),
             ], 400);
         }
     }
@@ -81,7 +79,7 @@ class PhoneNumberService extends BaseServiceClass
             'name' => $listId,
             'code' => $listCode,
             'label' => $listId,
-            'status' => 'active'
+            'status' => 'active',
         ]);
 
         return $list->id;

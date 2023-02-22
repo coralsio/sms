@@ -61,7 +61,7 @@ class ListsDataTable extends BaseDataTable
                 'action' => 'modal-load',
                 'href' => url('sms/lists/send-bulk-message-modal'),
                 'modal-title' => strip_tags(trans('SMS::labels.list.send_bulk_message')),
-                'confirmation' => ''
+                'confirmation' => '',
             ],
         ];
     }
@@ -69,7 +69,7 @@ class ListsDataTable extends BaseDataTable
     protected function getOptions()
     {
         return [
-            'resource_url' => url('sms/lists')
+            'resource_url' => url('sms/lists'),
         ];
     }
 }
