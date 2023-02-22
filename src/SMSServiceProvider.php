@@ -2,6 +2,7 @@
 
 namespace Corals\Modules\SMS;
 
+use Corals\Foundation\Providers\BasePackageServiceProvider;
 use Corals\Modules\SMS\Facades\SMS;
 use Corals\Modules\SMS\Hooks\MessageableTrait;
 use Corals\Modules\SMS\Models\PhoneNumber;
@@ -15,11 +16,18 @@ use Corals\Settings\Facades\Modules;
 use Corals\Settings\Facades\Settings;
 use Corals\User\Models\User;
 use Illuminate\Foundation\AliasLoader;
-use Illuminate\Support\ServiceProvider;
 
-class SMSServiceProvider extends ServiceProvider
+class SMSServiceProvider extends BasePackageServiceProvider
 {
+    /**
+     * @var
+     */
     protected $defer = true;
+    /**
+     * @var
+     */
+    protected $packageCode = 'corals-sms';
+
 
     /**
      * Bootstrap the application events.
@@ -27,7 +35,7 @@ class SMSServiceProvider extends ServiceProvider
      * @return void
      */
 
-    public function boot()
+    public function bootPackage()
     {
         // Load view
         $this->loadViewsFrom(__DIR__ . '/resources/views', 'SMS');
@@ -41,7 +49,6 @@ class SMSServiceProvider extends ServiceProvider
         $this->registerCustomFieldsModels();
 
         $this->registerWebhooks();
-        $this->registerModulesPackages();
 
         $messageableTrait = new MessageableTrait();
         User::mixin($messageableTrait);
@@ -52,7 +59,7 @@ class SMSServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function registerPackage()
     {
         $this->mergeConfigFrom(__DIR__ . '/config/sms.php', 'sms');
 
@@ -83,7 +90,7 @@ class SMSServiceProvider extends ServiceProvider
         }
     }
 
-    protected function registerModulesPackages()
+    public function registerModulesPackages()
     {
         Modules::addModulesPackages('corals/sms');
     }
