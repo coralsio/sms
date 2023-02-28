@@ -27,7 +27,9 @@
         "laravel/pint": "^1.0"
     },
     "require": {
-        "laravel-notification-channels/twilio": "^3.1"
+        "laravel-notification-channels/twilio": "^3.1",
+        "corals/utility-lov":"@dev",
+        "corals/utility-webhook":"@dev"
     },
     "scripts": {
         "test": "vendor/bin/phpunit",
