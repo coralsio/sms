@@ -28,8 +28,8 @@
     },
     "require": {
         "laravel-notification-channels/twilio": "^3.1",
-        "corals/utility-lov":"@dev",
-        "corals/utility-webhook":"@dev"
+        "corals/utility-lov": "@dev",
+        "corals/utility-webhook": "@dev"
     },
     "scripts": {
         "test": "vendor/bin/phpunit",
@@ -46,5 +46,15 @@
             ]
         }
     },
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/coralsio/utility-lov"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/coralsio/utility-webhook"
+        }
+    ]
 }
