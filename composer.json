@@ -46,15 +46,5 @@
             ]
         }
     },
-    "minimum-stability": "dev",
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/coralsio/utility-lov"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/coralsio/utility-webhook"
-        }
-    ]
+    "minimum-stability": "dev"
 }
