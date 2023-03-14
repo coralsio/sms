@@ -3,7 +3,7 @@
 namespace Corals\Modules\SMS\database\seeds;
 
 use Corals\Menu\Models\Menu;
-use Corals\Modules\Utility\ListOfValue\Models\ListOfValue;
+use Corals\Utility\ListOfValue\Models\ListOfValue;
 use Corals\Settings\Models\Setting;
 use Corals\User\Models\Permission;
 use Illuminate\Database\Seeder;
