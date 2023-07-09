@@ -11,10 +11,10 @@ use Corals\Modules\SMS\Models\SMSList;
 use Corals\Modules\SMS\Providers\SMSAuthServiceProvider;
 use Corals\Modules\SMS\Providers\SMSObserverServiceProvider;
 use Corals\Modules\SMS\Providers\SMSRouteServiceProvider;
-use Corals\Modules\Utility\Webhook\Facades\Webhooks;
 use Corals\Settings\Facades\Modules;
 use Corals\Settings\Facades\Settings;
 use Corals\User\Models\User;
+use Corals\Utility\Webhook\Facades\Webhooks;
 use Illuminate\Foundation\AliasLoader;
 
 class SMSServiceProvider extends BasePackageServiceProvider

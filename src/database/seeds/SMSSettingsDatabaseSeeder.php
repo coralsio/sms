@@ -3,8 +3,8 @@
 namespace Corals\Modules\SMS\database\seeds;
 
 use Corals\Modules\SMS\Models\SMSList;
-use Corals\Modules\Utility\ListOfValue\Facades\ListOfValues;
-use Corals\Modules\Utility\ListOfValue\Models\ListOfValue;
+use Corals\Utility\ListOfValue\Facades\ListOfValues;
+use Corals\Utility\ListOfValue\Models\ListOfValue;
 use Illuminate\Database\Seeder;
 
 class SMSSettingsDatabaseSeeder extends Seeder

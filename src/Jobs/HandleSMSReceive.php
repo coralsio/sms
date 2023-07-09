@@ -5,7 +5,7 @@ namespace Corals\Modules\SMS\Jobs;
 use Corals\Modules\SMS\Models\Message;
 use Corals\Modules\SMS\Models\PhoneNumber;
 use Corals\Modules\SMS\Models\SMSList;
-use Corals\Modules\Utility\Webhook\Models\Webhook;
+use Corals\Utility\Webhook\Models\Webhook;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
