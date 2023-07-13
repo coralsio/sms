@@ -25,6 +25,7 @@ to add these webhooks to your SMS provider, you need to add the URLs below to th
 
 <strong>Nexmo</strong>: https://developer.nexmo.com/concepts/guides/webhooks
 
+<p>&nbsp;</p>
 
 ## Installation
 
