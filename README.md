@@ -21,7 +21,7 @@
 to add these webhooks to your SMS provider, you need to add the URLs below to the provider dashboard, below is the documentation on how to set it up:
 
 
-<strongTwilio</strong>: https://www.twilio.com/docs/usage/webhooks
+<strong>Twilio</strong>: https://www.twilio.com/docs/usage/webhooks
 
 <strong>Nexmo</strong>: https://developer.nexmo.com/concepts/guides/webhooks
 
