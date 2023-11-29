@@ -6,7 +6,7 @@
     "description": "sms messaging module",
     "namespace": "Corals\\Modules\\SMS\\",
     "provider": "SMSServiceProvider",
-    "version": "1.0.1",
+    "version": "10.0.0",
     "load_order": "0",
     "folder": "SMS",
     "autoload": "psr-4",
