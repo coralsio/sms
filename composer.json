@@ -28,8 +28,8 @@
     },
     "require": {
         "laravel-notification-channels/twilio": "^3.1",
-        "corals/utility-lov": "@dev",
-        "corals/utility-webhook": "@dev"
+        "corals/utility-lov": "^10.0.0",
+        "corals/utility-webhook": "^10.0.0"
     },
     "scripts": {
         "test": "vendor/bin/phpunit",
