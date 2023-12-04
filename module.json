@@ -13,6 +13,6 @@
     "icon": "fa fa-envelope-open-o",
     "require": {
         "corals-utility": "^4.0",
-        "corals-utility-listOfValue": "1.0"
+        "corals-utility-listOfValue": "^10.0.0"
     }
 }
